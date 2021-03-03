@@ -27,8 +27,8 @@ export default function Card({
           className={flipped ? "front" : "back"}
           alt={type}
           src={flipped || guessed
-              ? `./assets/travel/${type}.jpg`
-              : `/assets/travel/back.jpg`}
+              ? `./assets/photo/travel/${type}.jpg`
+              : `/assets/photo/travel/back.jpg`}
         />
       </div>
     </div>

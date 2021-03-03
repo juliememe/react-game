@@ -11,8 +11,8 @@ export default function CardBoard({guessed, disabled, cards, flipped, handleClic
                     key={card.id}
                     id = {card.id}
                     type={card.type}
-                    width={"200px"}
-                    height={"280px"}
+                    width={200}
+                    height={280}
                     flipped={flipped.includes(card.id)}
                     handleClick={handleClick}
                     guessed={guessed.includes(card.id)}

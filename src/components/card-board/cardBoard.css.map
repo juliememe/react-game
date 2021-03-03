@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,WAAW,CAAA;EAEP,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,MAAM;CACjB",
+    "mappings": "AACA,AAAA,WAAW,CAAA;EAEP,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,MAAM;CACjB",
     "sources": [
         "cardBoard.scss"
     ],
