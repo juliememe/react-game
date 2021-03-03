@@ -35,7 +35,8 @@ export default function App() {
 
   const addToLocalStorage = () =>
     score + 100 > Number(localStorage.getItem("bestScore"))
-      ? localStorage.setItem("bestScore", score + 100) && setBestScore(score+100)
+      ? localStorage.setItem("bestScore", score + 100) &&
+        setBestScore(score + 100)
       : null;
 
   const handleClick = (id) => {
@@ -75,8 +76,6 @@ export default function App() {
   // const sameCardClicked = (id) => flipped.includes(id);
   const sameCardClicked = (id) => console.log(flipped.indexOf(id), id, flipped); //тут косяк, не сравнивает как надо сучий сын
 
-  // const checkGame = () => cards.length === guessed.length+2 ? console.log('GAME OVER'): console.log(guessed.length, cards.length-2);
-  // const checkGame = () => cards.length-1 === flipped.length ? console.log('GAME OVER'): console.log('its ok');
   const checkGame = () =>
     cards.length === guessed.length + 2 ? gameOver() : null;
 
@@ -95,26 +94,21 @@ export default function App() {
     console.log(localStorage.getItem("bestScore"));
   };
 
-  // const checkScore = (score) => {
-  //  return bestScore < score ? score : bestScore;
-  // }
   useEffect(() => {
     cards.map((card) => {
-      new Image().src = `./assets/travel/${card.type}.jpg`;
-        
-         })}, [cards]);
-
-
-      
-        
+      const src = `./assets/travel/${card.type}.jpg`;
+      new Image().src = src;
+      return {
+        card,
+      };
+    });
+  }, [cards]);
 
   function resetCards() {
     audio.play();
     setFlipped([]);
     setDisabled(false);
   }
-
- 
 
   const isMatch = (id) => {
     const clickedCard = cards.find((card) => card.id === id);
