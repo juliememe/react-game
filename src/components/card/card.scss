@@ -3,6 +3,9 @@
     display: inline-block;
     border: 1px solid white;
     background: black;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    
 }
 
 .flip-container.flipped .flipper{
@@ -14,6 +17,7 @@
     transition: 0.2s;
     transform-style: preserve-3d;
     position: relative;
+    
 }
 
 .front,
@@ -22,7 +26,7 @@
     position:absolute;
     left: 0;
     top: 0;
-    
+
 }
 
 .back{

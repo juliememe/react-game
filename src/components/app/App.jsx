@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CardBoard from "../card-board/CardBoard";
+import DataBar from "../data-bar/DataBar";
 import initializeDeck from "../deck/Deck";
+import Footer from "../footer/Footer";
+import Header from "../header/Header";
 import "./app.scss";
 
 export default function App() {
@@ -8,7 +11,7 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [guessed, setGuessed] = useState([]);
   const [disabled, setDisabled] = useState(false);
-  const [points, setPoints] = useState(0);
+  const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
   // const [time, setTime] =useState(0);
   // const [firstClick, setFirstClick] = useState(false);
@@ -20,11 +23,8 @@ export default function App() {
     setCards(initializeDeck());
   }, []);
 
-
-
-
   const handleClick = (id) => {
-  //   setFirstClick(true);
+    //   setFirstClick(true);
 
     // startGameTimer();
     // console.log({ firstClick });
@@ -39,12 +39,12 @@ export default function App() {
       if (sameCardClicked(flipped, id)) return;
       setFlipped([flipped[0], id]);
       if (isMatch(id)) {
-        setPoints(points + 100);
+        setScore(score + 100);
         setGuessed([...guessed, flipped[0], id]);
         resetCards();
         matchAudio.play();
       } else {
-        setPoints(points === 0 ? 0 : points - 10);
+        setScore(score === 0 ? 0 : score - 10);
         setTimeout(resetCards, 1000);
       }
     }
@@ -57,12 +57,12 @@ export default function App() {
     setDisabled(false);
   };
 
-  // const preloadImages = () => {
-  //   return cards.map((card) => {
-  //     const src = `./assets/travel/${card.type}.jpg`;
-  //     new Image().src = src;
-  //   });
-  // };
+  const preloadImages = () => {
+    return cards.map((card) => {
+      const src = `./assets/travel/${card.type}.jpg`;
+      new Image().src = src;
+    });
+  };
 
   const isMatch = (id) => {
     const clickedCard = cards.find((card) => card.id === id);
@@ -72,7 +72,7 @@ export default function App() {
 
   return (
     <div>
-      <h2>Memory Game</h2>
+      <Header />
       <CardBoard
         cards={cards}
         flipped={flipped}
@@ -80,8 +80,9 @@ export default function App() {
         disabled={disabled}
         guessed={guessed}
       />
-      <div className="points">Points : {points}</div>
-      <div className="moves">Total moves : {moves}</div>
+
+      <DataBar score={score} moves={moves} />
+      <Footer/>
     </div>
   );
 }

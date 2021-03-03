@@ -16,7 +16,6 @@ export default function initializeDeck() {
     "airplane",
     "amazonka",
     "greece",
-    "italy",
     "parashuts",
     "road",
     "venice",
