@@ -13,8 +13,10 @@ export default function App() {
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
-  const [gameStart, setGameStart] =useState(false);
+  const [bestScore, setBestScore] = useState(
+    Number(localStorage.getItem("bestScore")) || 0
+  );
+  const [gameStart, setGameStart] = useState(false);
   // const [time, setTime] =useState(0);
   // const [firstClick, setFirstClick] = useState(false);
 
@@ -29,71 +31,90 @@ export default function App() {
   //   localStorage.setItem("bestScore", String({ bestScore }));
   // }, [bestScore]);
 
-useEffect(() => {
-
-  const checkGame = () => flipped.length === cards.length ? console.log('im here') : null;
-}
-  )
-  
   // setBestScore(Number(localStorage.getItem("bestScore")));
 
-  const addToLocalStorage= (bestScore) => localStorage.setItem("bestScore", String({ bestScore }));
-
+  const addToLocalStorage = () =>
+    score + 100 > Number(localStorage.getItem("bestScore"))
+      ? localStorage.setItem("bestScore", score + 100) && setBestScore(score+100)
+      : null;
 
   const handleClick = (id) => {
     audio.play();
     setGameStart(true);
     setMoves(moves + 1);
     setDisabled(true);
-    
-    
+    setFlipped([id]);
+
     if (flipped.length === 0) {
-      setFlipped([id]);
+      console.log("first");
+      // setFlipped([id]);
       setDisabled(false);
+      console.log(flipped, id);
     } else {
       if (sameCardClicked(flipped, id)) return;
       setFlipped([flipped[0], id]);
+      console.log("i'm here");
       if (isMatch(id)) {
         setScore(score + 100);
-        
+
         setGuessed([...guessed, flipped[0], id]);
         checkGame();
         resetCards();
         matchAudio.play();
       } else {
-        setScore(score === 0 ? 0 : score - 10);
+        setScore(score - 10);
         setTimeout(resetCards, 1000);
       }
     }
   };
-  const sameCardClicked = (id) => flipped.includes(id);
 
-// const checkGame = () => cards.length === guessed.length+2 ? console.log('GAME OVER'): console.log(guessed.length, cards.length-2);
-// const checkGame = () => cards.length-1 === flipped.length ? console.log('GAME OVER'): console.log('its ok');
-const checkGame = () => cards.length === guessed.length+2 ? gameOver() : null;
+  const startNewGame = () => {
+    cards.map((card) => flipped.push(card));
+  };
 
-const gameOver= () =>{
+  // const sameCardClicked = (id) => flipped.includes(id);
+  const sameCardClicked = (id) => console.log(flipped.indexOf(id), id, flipped); //тут косяк, не сравнивает как надо сучий сын
 
-  setGameStart(false);
-  setFlipped([]);
-  setDisabled(false);
-  setBestScore(bestScore < score ? score : bestScore);
-  console.log('game over');
-  alert('GAME OVER', "YOUR SCORE IS ",{score})
-}
+  // const checkGame = () => cards.length === guessed.length+2 ? console.log('GAME OVER'): console.log(guessed.length, cards.length-2);
+  // const checkGame = () => cards.length-1 === flipped.length ? console.log('GAME OVER'): console.log('its ok');
+  const checkGame = () =>
+    cards.length === guessed.length + 2 ? gameOver() : null;
 
-  const resetCards = () => {
+  const gameOver = () => {
+    // setGameStart(false);
+    // setFlipped([]);
+    // setDisabled(false);
+    // checkScore(score);
+    // setBestScore(score+100);
+    console.log(bestScore);
+    addToLocalStorage();
+    console.log("game over");
+    console.log({ gameStart });
+    alert("GAME OVER", "YOUR SCORE IS ", { score });
+    startNewGame();
+    console.log(localStorage.getItem("bestScore"));
+  };
+
+  // const checkScore = (score) => {
+  //  return bestScore < score ? score : bestScore;
+  // }
+  useEffect(() => {
+    cards.map((card) => {
+      new Image().src = `./assets/travel/${card.type}.jpg`;
+        
+         })}, [cards]);
+
+
+      
+        
+
+  function resetCards() {
     audio.play();
     setFlipped([]);
     setDisabled(false);
-  };
+  }
 
-  const preloadImages = () => {
-    return cards.map((card) => {
-      const src = `./assets/travel/${card.type}.jpg`;
-      new Image().src = src;
-    });
-  };
+ 
 
   const isMatch = (id) => {
     const clickedCard = cards.find((card) => card.id === id);
@@ -112,7 +133,7 @@ const gameOver= () =>{
         guessed={guessed}
       />
 
-      <DataBar score={score} moves={moves} bestScore={bestScore}/>
+      <DataBar score={score} moves={moves} bestScore={bestScore} />
       <Footer />
     </div>
   );
