@@ -11,7 +11,7 @@ export default function App() {
   const [points, setPoints] = useState(0);
   const [moves, setMoves] = useState(0);
   // const [time, setTime] =useState(0);
-  const [firstClick, setFirstClick] = useState(false);
+  // const [firstClick, setFirstClick] = useState(false);
 
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
@@ -23,11 +23,11 @@ export default function App() {
 
 
 
-  // const handleClick = (id) => {
+  const handleClick = (id) => {
   //   setFirstClick(true);
 
     // startGameTimer();
-    console.log({ firstClick });
+    // console.log({ firstClick });
     audio.play();
 
     setMoves(moves + 1);
