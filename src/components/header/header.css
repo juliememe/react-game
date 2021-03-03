@@ -1,0 +1,18 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.settings__button {
+  background-color: transparent;
+  cursor: pointer;
+}
+/*# sourceMappingURL=header.css.map */

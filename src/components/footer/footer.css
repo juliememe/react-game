@@ -1,0 +1,34 @@
+.logo img {
+  width: 150px;
+}
+
+.git-name {
+  font-weight: 900;
+}
+
+.git-name a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-bottom: auto;
+}
+/*# sourceMappingURL=footer.css.map */

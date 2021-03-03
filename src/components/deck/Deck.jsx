@@ -16,9 +16,9 @@ export default function initializeDeck() {
     "airplane",
     "amazonka",
     "greece",
-    // "parashuts",
-    // "road",
-    // "venice",
+    "parashuts",
+    "road",
+    "venice",
   ].reduce((acc, type) => {
     acc.push({
       id: id++,

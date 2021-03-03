@@ -33,6 +33,16 @@ export default function App() {
 
   // setBestScore(Number(localStorage.getItem("bestScore")));
 
+  
+
+  // const startG = ()=>{
+  //   cards.map((card)=>{
+  //     card.guessed = true;
+  //   });
+  // }
+  
+
+
   const addToLocalStorage = () =>
     score + 100 > Number(localStorage.getItem("bestScore"))
       ? localStorage.setItem("bestScore", score + 100) &&
@@ -116,9 +126,13 @@ export default function App() {
     return flippedCard.type === clickedCard.type;
   };
 
+
+
+
   return (
     <div>
       <Header />
+      
       <CardBoard
         cards={cards}
         flipped={flipped}

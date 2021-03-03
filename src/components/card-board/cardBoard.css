@@ -1,5 +1,12 @@
 .card-board {
-  width: 80%;
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
+  text-align: center;
+}
+
+.best-score {
+  border: 1px solid black;
+  height: 20px;
 }
 /*# sourceMappingURL=cardBoard.css.map */
