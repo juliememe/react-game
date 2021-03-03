@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import './dataBar.scss';
 
-export default function DataBar({score, moves}) {
+export default function DataBar({score, moves, bestScore}) {
   return (
     <div className="data-bar">
       <div className="score">
@@ -10,7 +9,7 @@ export default function DataBar({score, moves}) {
         <div className="score-number"> {score}</div>
       </div>
       <div className="moves">total moves : {moves}</div>
-      <div className="best-score">best score : </div>
+      <div className="best-score">best score : { bestScore }</div>
     </div>
   );
 }

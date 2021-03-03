@@ -13,6 +13,8 @@ export default function App() {
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [gameStart, setGameStart] =useState(false);
   // const [time, setTime] =useState(0);
   // const [firstClick, setFirstClick] = useState(false);
 
@@ -23,15 +25,28 @@ export default function App() {
     setCards(initializeDeck());
   }, []);
 
+  // useEffect(() => {
+  //   localStorage.setItem("bestScore", String({ bestScore }));
+  // }, [bestScore]);
+
+useEffect(() => {
+
+  const checkGame = () => flipped.length === cards.length ? console.log('im here') : null;
+}
+  )
+  
+  // setBestScore(Number(localStorage.getItem("bestScore")));
+
+  const addToLocalStorage= (bestScore) => localStorage.setItem("bestScore", String({ bestScore }));
+
+
   const handleClick = (id) => {
-    //   setFirstClick(true);
-
-    // startGameTimer();
-    // console.log({ firstClick });
     audio.play();
-
+    setGameStart(true);
     setMoves(moves + 1);
     setDisabled(true);
+    
+    
     if (flipped.length === 0) {
       setFlipped([id]);
       setDisabled(false);
@@ -40,7 +55,9 @@ export default function App() {
       setFlipped([flipped[0], id]);
       if (isMatch(id)) {
         setScore(score + 100);
+        
         setGuessed([...guessed, flipped[0], id]);
+        checkGame();
         resetCards();
         matchAudio.play();
       } else {
@@ -50,6 +67,20 @@ export default function App() {
     }
   };
   const sameCardClicked = (id) => flipped.includes(id);
+
+// const checkGame = () => cards.length === guessed.length+2 ? console.log('GAME OVER'): console.log(guessed.length, cards.length-2);
+// const checkGame = () => cards.length-1 === flipped.length ? console.log('GAME OVER'): console.log('its ok');
+const checkGame = () => cards.length === guessed.length+2 ? gameOver() : null;
+
+const gameOver= () =>{
+
+  setGameStart(false);
+  setFlipped([]);
+  setDisabled(false);
+  setBestScore(bestScore < score ? score : bestScore);
+  console.log('game over');
+  alert('GAME OVER', "YOUR SCORE IS ",{score})
+}
 
   const resetCards = () => {
     audio.play();
@@ -81,8 +112,8 @@ export default function App() {
         guessed={guessed}
       />
 
-      <DataBar score={score} moves={moves} />
-      <Footer/>
+      <DataBar score={score} moves={moves} bestScore={bestScore}/>
+      <Footer />
     </div>
   );
 }
