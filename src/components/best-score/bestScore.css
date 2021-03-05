@@ -1,0 +1,28 @@
+.best-score__wrapper {
+  display: none;
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 30px 20px;
+  z-index: 100;
+  cursor: default;
+}
+
+.best-score__wrapper.show {
+  display: block;
+}
+
+h1 {
+  font-weight: 900;
+  letter-spacing: -3px;
+  margin: 0;
+}
+/*# sourceMappingURL=bestScore.css.map */

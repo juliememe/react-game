@@ -1,0 +1,99 @@
+.settings {
+    display: none;
+    width: 500px;
+    height: 350px;
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-image: url("brain.png");
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 30px 20px;
+    z-index: 100;
+    cursor: default;
+
+    &__data{
+        margin-top: 20px;
+        font-weight: 900;
+        font-size: 28px;
+    }
+    &__button{
+        margin-top: 20px;
+        font-weight: 900;
+        font-size: 28px;
+    transition: 0.1s;
+
+    }
+    &__button:hover{
+        background-color: rgba(236, 57, 236, 0.781);
+    }
+}
+
+.settings.show {
+    display: block;
+    // z-index: 10;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.603);
+    cursor: pointer;
+}
+
+.overlay.show {
+    // transition: 5s;
+    display: block;
+}
+
+.level{
+    display: flex;
+    font-display: row;
+    text-align: center;
+    justify-content: center;
+
+    &-title{
+        margin-right: 10px;
+    }
+
+    &-select{
+        font-size: 18px;
+        font-weight: 300;
+        cursor: pointer;
+    transition: 0.1s;
+
+    }
+
+    &-select:hover{
+        background-color: rgba(236, 57, 236, 0.781);
+
+    }
+}
+
+
+
+.show-best-score{
+    outline: none;
+    font-size: 18px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px;
+    margin: 10px;
+    transition: 0.1s;
+}
+.show-best-score:hover{
+    background-color: rgba(236, 57, 236, 0.781);
+
+}

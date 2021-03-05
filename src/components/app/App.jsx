@@ -4,9 +4,11 @@ import DataBar from "../data-bar/DataBar";
 import initializeDeck from "../deck/Deck";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
+import Overlay from "../overlay/Overlay";
 import "./app.scss";
+// import Settings from "../settings/Settings";
 
-export default function App() {
+export default function App({level, handleOverlayClick}) {
   const [flipped, setFlipped] = useState([]);
   const [cards, setCards] = useState([]);
   const [guessed, setGuessed] = useState([]);
@@ -17,31 +19,33 @@ export default function App() {
     Number(localStorage.getItem("bestScore")) || 0
   );
   const [gameStart, setGameStart] = useState(false);
-  // const [time, setTime] =useState(0);
-  // const [firstClick, setFirstClick] = useState(false);
-
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
 
   useEffect(() => {
     setCards(initializeDeck());
+    
   }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("bestScore", String({ bestScore }));
-  // }, [bestScore]);
-
-  // setBestScore(Number(localStorage.getItem("bestScore")));
-
   
+  // const countNumberOfCards =()=>{
+  //   setCards(initializeDeck());
 
-  // const startG = ()=>{
-  //   cards.map((card)=>{
-  //     card.guessed = true;
-  //   });
-  // }
-  
+  //     if(level === 'easy'){
+  //       return cards.slice(0, 8);
+  //     } else if (level === 'medium'){
+  //         return cards.slice(0, 12);
+      
+  //       } else if(level ==="hard"){
+  //         return cards.slice(0, 16);
+  //       }
+      
+  //     }
 
+
+      // useEffect(() => {
+      //   countNumberOfCards()
+      //   console.log("im right here")
+      // }, [level]);
 
   const addToLocalStorage = () =>
     score + 100 > Number(localStorage.getItem("bestScore"))
@@ -50,12 +54,16 @@ export default function App() {
       : null;
 
   const handleClick = (id) => {
+    // countNumberOfCards();
+
+    console.log({level})
     audio.play();
     setGameStart(true);
+    console.log(gameStart)
     setMoves(moves + 1);
     setDisabled(true);
     setFlipped([id]);
-
+    
     if (flipped.length === 0) {
       console.log("first");
       // setFlipped([id]);
@@ -67,7 +75,6 @@ export default function App() {
       console.log("i'm here");
       if (isMatch(id)) {
         setScore(score + 100);
-
         setGuessed([...guessed, flipped[0], id]);
         checkGame();
         resetCards();
@@ -90,9 +97,11 @@ export default function App() {
     cards.length === guessed.length + 2 ? gameOver() : null;
 
   const gameOver = () => {
-    // setGameStart(false);
-    // setFlipped([]);
-    // setDisabled(false);
+    setGameStart(false);
+    setFlipped([]);
+    setDisabled(false);
+    resetCards();
+    initializeDeck();
     // checkScore(score);
     // setBestScore(score+100);
     console.log(bestScore);
@@ -102,7 +111,10 @@ export default function App() {
     alert("GAME OVER", "YOUR SCORE IS ", { score });
     startNewGame();
     console.log(localStorage.getItem("bestScore"));
+    console.log(gameStart, "start")
+
   };
+
 
   useEffect(() => {
     cards.map((card) => {
@@ -130,19 +142,21 @@ export default function App() {
 
 
   return (
-    <div>
-      <Header />
+    <div className="wrapper">
+      <Header bestScore = {bestScore} level={level}/>
       
-      <CardBoard
+        <CardBoard
         cards={cards}
         flipped={flipped}
         handleClick={handleClick}
         disabled={disabled}
         guessed={guessed}
+        
       />
 
       <DataBar score={score} moves={moves} bestScore={bestScore} />
       <Footer />
+      <Overlay onClick={handleOverlayClick} />
     </div>
   );
 }

@@ -1,3 +1,7 @@
+
+import {CARDDECK} from '../card-list/CardList';
+
+
 function shuffle(array) {
   const newArray = array.slice(0);
   for (let i = 0; i < array.length - 1; i++) {
@@ -11,15 +15,14 @@ function shuffle(array) {
 
 
 export default function initializeDeck() {
+
+  // const level = ['easy', 'medium', 'hard'];
+
+  // const newAr = card.slice(0, 4);
   let id = 0;
-  const cards = [
-    "airplane",
-    "amazonka",
-    "greece",
-    "parashuts",
-    "road",
-    "venice",
-  ].reduce((acc, type) => {
+  
+  
+  const card = CARDDECK.reduce((acc, type) => {
     acc.push({
       id: id++,
       type,
@@ -31,5 +34,10 @@ export default function initializeDeck() {
     return acc;
   }, []);
 
-  return shuffle(cards);
+  return shuffle(card);
+
+// console.log(CARDDECK)
+ 
+
+  
 }

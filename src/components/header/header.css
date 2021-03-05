@@ -14,5 +14,7 @@
 .settings__button {
   background-color: transparent;
   cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
 }
 /*# sourceMappingURL=header.css.map */

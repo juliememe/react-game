@@ -31,4 +31,20 @@
           align-items: flex-end;
   margin-bottom: auto;
 }
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.year {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: end;
+}
 /*# sourceMappingURL=footer.css.map */

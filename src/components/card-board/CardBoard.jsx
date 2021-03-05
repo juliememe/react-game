@@ -16,6 +16,7 @@ export default function CardBoard({guessed, disabled, cards, flipped, handleClic
                     flipped={flipped.includes(card.id)}
                     handleClick={handleClick}
                     guessed={guessed.includes(card.id)}
+                    className = "card"
                     disabled ={disabled || guessed.includes(card.id)}
                     />)
             }

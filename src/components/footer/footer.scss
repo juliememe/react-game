@@ -26,3 +26,12 @@ margin-bottom: auto;
 }
 }
 
+.box{
+    display: flex;
+    flex-direction: row;
+}
+.year{
+    font-size: 16px;
+    font-weight: 500;
+    text-align: end;
+}
