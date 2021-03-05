@@ -5,6 +5,8 @@ import initializeDeck from "../deck/Deck";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Overlay from "../overlay/Overlay";
+import Finish from "../finish/Finish";
+// import BestScore from "../best-score/BestScore";
 import "./app.scss";
 // import Settings from "../settings/Settings";
 
@@ -13,12 +15,15 @@ export default function App({ level, handleOverlayClick }) {
   const [cards, setCards] = useState([]);
   const [guessed, setGuessed] = useState([]);
   const [disabled, setDisabled] = useState(false);
-   const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState(
     Number(localStorage.getItem("bestScore")) || 0
   );
   const [bestScoreEver, setBestScoreEver] = useState([]);
+  const finishWindow = document.querySelector(".finish");
+  const overlay = document.querySelector(".overlay");
+
   // const [gameStart, setGameStart] = useState(false);
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
@@ -27,56 +32,40 @@ export default function App({ level, handleOverlayClick }) {
     setCards(initializeDeck());
   }, []);
 
-  // const countNumberOfCards =()=>{
-  //   setCards(initializeDeck());
+  const bestScoreWindow = document.querySelector(".best-score__wrapper");
 
-  //     if(level === 'easy'){
-  //       return cards.slice(0, 8);
-  //     } else if (level === 'medium'){
-  //         return cards.slice(0, 12);
+  // const showBestScore =()=>{
+  //   // overlay.classList.toggle("show");
+  //   finishWindow.classList.remove("show");
+  //   bestScoreWindow.classList.add("show");
 
-  //       } else if(level ==="hard"){
-  //         return cards.slice(0, 16);
-  //       }
+  //   console.log("Я РАБОТАЮЮЮЮ")
 
-  //     }
-
-  // useEffect(() => {
-  //   countNumberOfCards()
-  //   console.log("im right here")
-  // }, [level]);
-
+  // }
   const addToLocalStorage = () => {
-    if(score + 100 > Number(localStorage.getItem("bestScore"))){
-      return  localStorage.setItem("bestScore", score + 100) &&
-      setBestScore(score + 100);
+    if (score + 100 > Number(localStorage.getItem("bestScore"))) {
+      return (
+        localStorage.setItem("bestScore", score + 100) &&
+        setBestScore(score + 100)
+      );
     }
-  
- 
+
     if (bestScoreEver.length < 10) {
-      setBestScoreEver(bestScoreEver + 1);
       const dataScore = {
         bestScore: score + 100,
         date: +new Date(),
         movement: moves,
       };
+      setBestScoreEver();
       localStorage.setItem(bestScoreEver.length + 1, dataScore);
       console.log(bestScoreEver.length);
     }
   };
 
-  // score + 100 > Number(localStorage.getItem("bestScore"))
-  // ? localStorage.setItem("bestScore", score + 100) &&
-  //   setBestScore(score + 100)
-  // : null;
-
   const handleClick = (id) => {
     // countNumberOfCards();
 
-    // console.log({ level });
     audio.play();
-    // setGameStart(true);
-    // console.log(gameStart);
     setMoves(moves + 1);
     setDisabled(true);
     setFlipped([id]);
@@ -109,6 +98,11 @@ export default function App({ level, handleOverlayClick }) {
   };
 
   const startNewGame = () => {
+    finishWindow.classList.remove("show");
+    overlay.classList.remove("show");
+    setCards([]);
+    setFlipped([]);
+    setGuessed([]);
     setCards(initializeDeck());
     setScore(0);
     setMoves(0);
@@ -119,10 +113,7 @@ export default function App({ level, handleOverlayClick }) {
     console.log(arr);
     setFlipped(arr);
     console.log(flipped);
-    setTimeout(resetCards, 2000);
-    
-    // cards.map((card) => flipped.push(card));
-    // console.log(flipped);
+    setTimeout(resetCards, 1500);
   };
 
   // const sameCardClicked = (id) => flipped.includes(id);
@@ -132,6 +123,11 @@ export default function App({ level, handleOverlayClick }) {
 
   const checkGame = () =>
     cards.length === guessed.length + 2 ? gameOver() : null;
+
+  const showFinishWindow = () => {
+    finishWindow.classList.add("show");
+    overlay.classList.add("show");
+  };
 
   const gameOver = () => {
     // setGameStart(false);
@@ -143,12 +139,15 @@ export default function App({ level, handleOverlayClick }) {
     // setBestScore(score+100);
     // console.log(bestScore);
     addToLocalStorage();
-    // console.log("game over");
-    // console.log({ gameStart });
-    alert("GAME OVER", "YOUR SCORE IS ", { score });
+    showFinishWindow();
+
     // startNewGame();
-    // console.log(localStorage.getItem("bestScore"));
-    // console.log(gameStart, "start");
+  };
+
+  const closeMenu = () => {
+    overlay.classList.remove("show");
+    finishWindow.classList.remove("show");
+    console.log("CLOSE");
   };
 
   useEffect(() => {
@@ -173,21 +172,43 @@ export default function App({ level, handleOverlayClick }) {
     return flippedCard.type === clickedCard.type;
   };
 
+  // const bestScoreWindow = document.querySelector(".best-score__wrapper");
+  // const overlay = document.querySelector(".overlay");
+
+  const showBestScore = () => {
+    bestScoreWindow.classList.add("show");
+    // overlay.classList.toggle("show");
+    console.log("showbestscore");
+  };
   return (
     <div className="wrapper">
       {/* <button onClick={startNewGame}>Start Game</button> */}
-      <Header bestScore={bestScore} level={level} startNewGame={startNewGame} />
-
-      <CardBoard
-        cards={cards}
-        flipped={flipped}
-        handleClick={handleClick}
-        disabled={disabled}
-        guessed={guessed}
+      <Header
+        bestScore={bestScore}
+        level={level}
+        startNewGame={startNewGame}
+        showBestScore={showBestScore}
       />
+      <main className="main">
+        <CardBoard
+          cards={cards}
+          flipped={flipped}
+          handleClick={handleClick}
+          disabled={disabled}
+          guessed={guessed}
+        />
 
-      <DataBar score={score} moves={moves} bestScore={bestScore} />
+        <DataBar score={score} moves={moves} bestScore={bestScore} />
+      </main>
+
       <Footer />
+      <Finish
+        startNewGame={startNewGame}
+        score={score}
+        closeMenu={closeMenu}
+        showBestScore={showBestScore}
+      />
+      {/* <BestScore/> */}
       <Overlay onClick={handleOverlayClick} />
     </div>
   );

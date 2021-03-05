@@ -7,6 +7,7 @@ export default function Overlay(){
     const settings = document.querySelector(".settings");
     const overlay = document.querySelector(".overlay");
   const bestScoreWindow = document.querySelector(".best-score__wrapper");
+  const finishWindow = document.querySelector(".finish");
 
   
     const handleOverlayClick = () => {
@@ -14,6 +15,7 @@ export default function Overlay(){
       settings.classList.remove("show");
       overlay.classList.remove("show");
       bestScoreWindow.classList.remove("show");
+      finishWindow.classList.remove("show");
 
     };
 

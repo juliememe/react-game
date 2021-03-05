@@ -1,26 +1,66 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html{
+html {
     width: 100%;
     height: 100%;
 }
+
 body {
     font-family: "Roboto";
 
 
-    
 }
 
-.root {
+// .root {
 
-}
+
+//     width: 100vh;
+//     margin: 0;
+//     padding: 0;
+// }
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
     position: relative;
     background-image: url('brain1.png');
     background-position: 100% 50%;
     background-size: 25%;
     background-repeat: no-repeat;
+}
+
+.main {
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .header {
+        .container {
+
+            padding: 0;
+        }
+    }
+
+    .card-board {
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .footer {
+        .container {
+            padding: 0;
+        }
+    }
+
 }
