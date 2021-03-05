@@ -7,7 +7,7 @@ export const CARDDECK = [
   // "italy",
   "road",
   // "baunti",
-  // "bluewater",
+  "bluewater",
   // "boat",
   // "break",
   // "bridge",
@@ -20,7 +20,7 @@ export const CARDDECK = [
   // "greece_sea",
   // "hot",
   // "india",
-  // "islands",
+  "islands",
   // "japan",
   // "kimono",
   // "lake",
@@ -36,7 +36,7 @@ export const CARDDECK = [
   // "seaside",
   // "train",
   // "water-village",
-  // "waterline",
+  "waterline",
   // "window",
   // "yalta"
 ];
