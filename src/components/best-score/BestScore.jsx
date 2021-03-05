@@ -8,9 +8,9 @@ export default function BestScore(){
     return(
         <div className="best-score__wrapper">
             <h1>Best Score Ever</h1>
-            <div className="date"></div>
-            <div className="score"></div>
-            <div className="movements"></div>
+            {/* <div className="date">{date}</div>
+            <div className="score">{score}</div>
+            <div className="moves">{moves}</div> */}
         </div>
     )
 }

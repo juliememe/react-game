@@ -17,4 +17,20 @@
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
+
+.start__button {
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  width: 80px;
+  height: 84px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.start__button:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
 /*# sourceMappingURL=header.css.map */
