@@ -5,7 +5,7 @@ import './cardBoard.scss';
 
 export default function CardBoard({guessed, disabled, cards, flipped, handleClick}){
     return(
-        <div className ='card-board'>
+        <div className ='card-board' id="board">
             {
                 cards.map(card => <Card 
                     key={card.id}

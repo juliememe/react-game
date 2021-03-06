@@ -6,6 +6,7 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Overlay from "../overlay/Overlay";
 import Finish from "../finish/Finish";
+
 // import BestScore from "../best-score/BestScore";
 import "./app.scss";
 // import Settings from "../settings/Settings";
@@ -17,6 +18,8 @@ export default function App({ level, handleOverlayClick }) {
   const [disabled, setDisabled] = useState(false);
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
+  const [sound, setSound] = useState(true);
+
   const [bestScore, setBestScore] = useState(
     Number(localStorage.getItem("bestScore")) || 0
   );
@@ -27,6 +30,7 @@ export default function App({ level, handleOverlayClick }) {
   // const [gameStart, setGameStart] = useState(false);
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
+  const start = new Audio("./assets/audio/movements/ok1.mp3");
 
   useEffect(() => {
     setCards(initializeDeck());
@@ -34,14 +38,6 @@ export default function App({ level, handleOverlayClick }) {
 
   const bestScoreWindow = document.querySelector(".best-score__wrapper");
 
-  // const showBestScore =()=>{
-  //   // overlay.classList.toggle("show");
-  //   finishWindow.classList.remove("show");
-  //   bestScoreWindow.classList.add("show");
-
-  //   console.log("Я РАБОТАЮЮЮЮ")
-
-  // }
   const addToLocalStorage = () => {
     if (score + 100 > Number(localStorage.getItem("bestScore"))) {
       return (
@@ -56,16 +52,30 @@ export default function App({ level, handleOverlayClick }) {
         date: +new Date(),
         movement: moves,
       };
-      setBestScoreEver();
-      localStorage.setItem(bestScoreEver.length + 1, dataScore);
+      setBestScoreEver(dataScore);
+      console.log(dataScore, bestScoreEver);
+      localStorage.setItem("gameData", bestScoreEver);
       console.log(bestScoreEver.length);
     }
   };
 
-  const handleClick = (id) => {
-    // countNumberOfCards();
+  const toggleSound = () => {
+    return sound ? setSound(false) : setSound(true);
+  };
 
-    audio.play();
+  const playFlipSound = () => {
+    return sound ? audio.play() : null;
+  };
+
+  const playMatchSound = () => {
+    return sound ? matchAudio.play() : null;
+  };
+
+  const playStartSound = () => {
+    return sound ? start.play() : null;
+  };
+  const handleClick = (id) => {
+    playFlipSound();
     setMoves(moves + 1);
     setDisabled(true);
     setFlipped([id]);
@@ -84,20 +94,16 @@ export default function App({ level, handleOverlayClick }) {
         setGuessed([...guessed, flipped[0], id]);
         checkGame();
         resetCards();
-        matchAudio.play();
+      playMatchSound();
       } else {
         setScore(score - 10);
         setTimeout(resetCards, 1000);
       }
     }
-
-    console.log(flipped);
-    console.log(cards);
-    console.log(guessed);
-    console.log(disabled);
   };
 
   const startNewGame = () => {
+    playStartSound();
     finishWindow.classList.remove("show");
     overlay.classList.remove("show");
     setCards([]);
@@ -116,15 +122,16 @@ export default function App({ level, handleOverlayClick }) {
     setTimeout(resetCards, 1500);
   };
 
-  // const sameCardClicked = (id) => flipped.includes(id);
-  const sameCardClicked = (id) => {
-    // console.log(flipped.indexOf(id), id, flipped);
-  }; //тут косяк, не сравнивает как надо сучий сын
+  const sameCardClicked = (id) => flipped.includes(id);
+  // const sameCardClicked = (id) => {
+  //   // console.log(flipped.indexOf(id), id, flipped);
+  // }; //тут косяк, не сравнивает как надо сучий сын
 
   const checkGame = () =>
     cards.length === guessed.length + 2 ? gameOver() : null;
 
   const showFinishWindow = () => {
+    // win.play();
     finishWindow.classList.add("show");
     overlay.classList.add("show");
   };
@@ -161,7 +168,7 @@ export default function App({ level, handleOverlayClick }) {
   }, [cards]);
 
   function resetCards() {
-    audio.play();
+    playFlipSound();
     setFlipped([]);
     setDisabled(false);
   }
@@ -182,12 +189,13 @@ export default function App({ level, handleOverlayClick }) {
   };
   return (
     <div className="wrapper">
-      {/* <button onClick={startNewGame}>Start Game</button> */}
       <Header
         bestScore={bestScore}
         level={level}
         startNewGame={startNewGame}
         showBestScore={showBestScore}
+        toggleSound={toggleSound}
+        sound={sound}
       />
       <main className="main">
         <CardBoard

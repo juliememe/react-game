@@ -1,30 +1,60 @@
-.container{
+.container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 30px 20px;
     display: flex;
     justify-content: space-between;
-    
-}
-
-.settings__button{
-    background-color: transparent;
-    cursor: pointer;
-    transition: 0.1s;
 
 }
 
-.start__button{
+.settings__button {
     background-color: transparent;
     cursor: pointer;
     transition: 0.1s;
-    width: 80px;
-    height: 84px;
+    margin: 0;
+
+}
+
+.start__button {
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.1s;
+    width: 60px;
+    height: 60px;
     text-align: center;
     font-weight: 900;
     font-size: 24px;
 }
-.start__button:hover{
-    background-color:rgba(236, 57, 236, 0.781) ;
+
+
+.full-size {
+
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.1s;
+    width: 60px;
+    height: 60px;
+    font-weight: 900;
+    font-size: 24px;
+    background-image: url("./full-screen.svg");
+    background-position: cover;
+    background-repeat: no-repeat;
+    outline: none;
+
+}
+
+.buttons {
+    display: flex;
+
+    button {
+        margin-left: 20px;
+    }
+
+    button:hover {
+        border: none;
+        background-color: rgba(236, 57, 236, 0.781);
+
+
+    }
 }

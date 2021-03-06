@@ -50,14 +50,70 @@ body {
 
 @media screen and (max-width: 1024px) {
   .header .container {
+    margin-top: 10px;
     padding: 0;
+  }
+  .buttons {
+    margin: 5px;
   }
   .card-board {
     max-width: 1000px;
     width: 100%;
   }
   .footer .container {
+    padding: 5px;
+  }
+  .game-title img {
+    width: 300px;
+    padding: 10px;
+  }
+  .start__button {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .settings__button {
+    width: 50px;
+    height: 50px;
+  }
+  .full-size {
+    width: 50px;
+    height: 50px;
+  }
+  .logo img {
+    width: 100px;
+  }
+  .moves {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  .score {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .score-title {
+    font-size: 24px;
+  }
+  .score-number {
+    font-size: 24px;
     padding: 0;
+    margin: 0;
+    text-align: end;
+    border: none;
+    height: 28px;
+    margin-left: 5px;
+  }
+  .best-score {
+    display: none;
+  }
+  .git-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .year {
+    font-size: 12px;
   }
 }
 /*# sourceMappingURL=app.css.map */

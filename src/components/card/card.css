@@ -3,7 +3,7 @@
           perspective: 1000px;
   display: inline-block;
   border: 1px solid white;
-  background: black;
+  background: white;
   margin-right: 15px;
   margin-bottom: 15px;
 }
@@ -14,8 +14,8 @@
 }
 
 .flipper {
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   position: relative;

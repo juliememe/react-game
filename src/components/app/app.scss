@@ -47,11 +47,13 @@ body {
 @media screen and (max-width: 1024px) {
     .header {
         .container {
-
+            margin-top: 10px;
             padding: 0;
         }
     }
-
+    .buttons{
+        margin: 5px;
+    }
     .card-board {
         max-width: 1000px;
         width: 100%;
@@ -59,63 +61,75 @@ body {
 
     .footer {
         .container {
-            padding: 0;
+            padding: 5px;
         }
     }
 
-}
-@media screen and (max-width: 1024px) {
-    .game-title{
-        img{
+
+    .game-title {
+        img {
             width: 300px;
             padding: 10px;
         }
     }
-    .start__button{
+
+    .start__button {
         width: 50px;
         height: 50px;
         font-size: 14px;
         margin-bottom: 10px;
     }
-    .settings__button{
-        img{
-            width: 50px;
-            height: 50px;
-        }
+
+    .settings__button {
+        width: 50px;
+height: 50px;
+       
     }
-    .logo{
-        img{
+    .full-size{
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo {
+        img {
             width: 100px;
         }
     }
-    .moves{
+
+    .moves {
         font-size: 18px;
         margin-top: 0;
     }
-    .score{
+
+    .score {
         align-items: center;
     }
-    .score-title{
+
+    .score-title {
         font-size: 24px;
     }
-    .score-number{
+
+    .score-number {
         font-size: 24px;
-       padding: 0;
-       margin: 0;
-       text-align: end;
+        padding: 0;
+        margin: 0;
+        text-align: end;
         border: none;
         height: 28px;
         margin-left: 5px;
     }
-    .best-score{
+
+    .best-score {
         display: none;
     }
 
-    .git-name{
+    .git-name {
         font-size: 18px;
         margin-bottom: 10px;
     }
-    .year{
+
+    .year {
         font-size: 12px;
     }
 }
+

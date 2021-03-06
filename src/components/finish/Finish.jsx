@@ -20,17 +20,13 @@ export default function Finish({
             Play again
           </button>
         </div>
-        <div> Wanna see the best score? </div>
-        <div className="finish__buttons">
-          <button className="yep" onClick={showBestScore}>
-            yep
-          </button>
-          <button className="no" onClick={closeMenu}>
-            nope
+       
+          <button className="finish__button" onClick={closeMenu}>
+            cancel
           </button>
         </div>
         <BestScore />
       </div>
-    </div>
+    
   );
 }

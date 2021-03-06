@@ -27,7 +27,11 @@
 }
 
 .settings__button {
-  margin-top: 20px;
+  background-image: url("./settings.svg");
+  background-repeat: no-repeat;
+  background-position: cover;
+  width: 60px;
+  height: 60px;
   font-weight: 900;
   font-size: 28px;
   -webkit-transition: 0.1s;
@@ -100,5 +104,41 @@
 
 .show-best-score:hover {
   background-color: rgba(236, 57, 236, 0.781);
+}
+
+.music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.music__button .play,
+.music__button .stop {
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.sound-on {
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
 }
 /*# sourceMappingURL=settings.css.map */

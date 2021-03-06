@@ -2,7 +2,7 @@
     perspective: 1000px;
     display: inline-block;
     border: 1px solid white;
-    background: black;
+    background: white;
     margin-right: 15px;
     margin-bottom: 15px;
     
@@ -14,7 +14,7 @@
 
 .flipper{
     
-    transition: 0.2s;
+    transition: 0.3s;
     transform-style: preserve-3d;
     position: relative;
     

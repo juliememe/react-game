@@ -18,19 +18,26 @@
     z-index: 100;
     cursor: default;
 
-    &__data{
+
+    &__data {
         margin-top: 20px;
         font-weight: 900;
         font-size: 28px;
     }
-    &__button{
-        margin-top: 20px;
+
+    &__button {
+        background-image: url("./settings.svg");
+        background-repeat: no-repeat;
+        background-position: cover;
+        width: 60px;
+        height: 60px;
         font-weight: 900;
         font-size: 28px;
-    transition: 0.1s;
+        transition: 0.1s;
 
     }
-    &__button:hover{
+
+    &__button:hover {
         background-color: rgba(236, 57, 236, 0.781);
     }
 }
@@ -58,25 +65,25 @@
     display: block;
 }
 
-.level{
+.level {
     display: flex;
     font-display: row;
     text-align: center;
     justify-content: center;
 
-    &-title{
+    &-title {
         margin-right: 10px;
     }
 
-    &-select{
+    &-select {
         font-size: 18px;
         font-weight: 300;
         cursor: pointer;
-    transition: 0.1s;
+        transition: 0.1s;
 
     }
 
-    &-select:hover{
+    &-select:hover {
         background-color: rgba(236, 57, 236, 0.781);
 
     }
@@ -84,7 +91,7 @@
 
 
 
-.show-best-score{
+.show-best-score {
     outline: none;
     font-size: 18px;
     background-color: transparent;
@@ -93,7 +100,44 @@
     margin: 10px;
     transition: 0.1s;
 }
-.show-best-score:hover{
+
+.show-best-score:hover {
     background-color: rgba(236, 57, 236, 0.781);
 
+}
+
+.music {
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    align-items: center;
+
+    &__button {
+
+        .play,
+        
+        .stop {
+            outline: none;
+            font-size: 20px;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 5px;
+            margin: 10px;
+            transition: 0.1s;
+        }
+    }
+}
+
+.sound {
+    
+    &-on{
+        outline: none;
+        font-size: 20px;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 5px;
+        margin: 10px;
+        transition: 0.1s;
+        
+    }
 }
