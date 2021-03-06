@@ -64,3 +64,58 @@ body {
     }
 
 }
+@media screen and (max-width: 1024px) {
+    .game-title{
+        img{
+            width: 300px;
+            padding: 10px;
+        }
+    }
+    .start__button{
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .settings__button{
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .logo{
+        img{
+            width: 100px;
+        }
+    }
+    .moves{
+        font-size: 18px;
+        margin-top: 0;
+    }
+    .score{
+        align-items: center;
+    }
+    .score-title{
+        font-size: 24px;
+    }
+    .score-number{
+        font-size: 24px;
+       padding: 0;
+       margin: 0;
+       text-align: end;
+        border: none;
+        height: 28px;
+        margin-left: 5px;
+    }
+    .best-score{
+        display: none;
+    }
+
+    .git-name{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .year{
+        font-size: 12px;
+    }
+}
