@@ -6,10 +6,7 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Overlay from "../overlay/Overlay";
 import Finish from "../finish/Finish";
-
-// import BestScore from "../best-score/BestScore";
 import "./app.scss";
-// import Settings from "../settings/Settings";
 
 export default function App({ level, handleOverlayClick }) {
   const [flipped, setFlipped] = useState([]);
@@ -19,15 +16,13 @@ export default function App({ level, handleOverlayClick }) {
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
   const [sound, setSound] = useState(true);
-
   const [bestScore, setBestScore] = useState(
     Number(localStorage.getItem("bestScore")) || 0
   );
+  // const [gameState, setGameState] = useState([]);
   const [bestScoreEver, setBestScoreEver] = useState([]);
   const finishWindow = document.querySelector(".finish");
   const overlay = document.querySelector(".overlay");
-
-  // const [gameStart, setGameStart] = useState(false);
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
   const start = new Audio("./assets/audio/movements/ok1.mp3");
@@ -46,18 +41,19 @@ export default function App({ level, handleOverlayClick }) {
         setBestScore(score + 100)
       );
     }
+  };
 
-    if (bestScoreEver.length < 10) {
-      const dataScore = {
-        bestScore: score + 100,
-        date: +new Date(),
-        movement: moves,
-      };
-      setBestScoreEver(dataScore);
-      console.log(dataScore, bestScoreEver);
-      localStorage.setItem("gameData", bestScoreEver);
-      console.log(bestScoreEver.length);
-    }
+  useEffect(() => {});
+
+  const addToTheBestScore = () => {
+    setBestScoreEver([
+      ...bestScoreEver,
+      {
+        id: Date.now(),
+        score: score,
+        moves: moves,
+      },
+    ]);
   };
 
   const toggleSound = () => {
@@ -80,32 +76,46 @@ export default function App({ level, handleOverlayClick }) {
     return sound ? win.play() : null;
   };
   const handleClick = (id) => {
+    if (sameCardClicked(flipped, id)) return;
+
+    console.log({ cards });
     playFlipSound();
     setMoves(moves + 1);
     setDisabled(true);
     setFlipped([id]);
+    // console.log(guessed)
 
+    console.log(sameCardClicked(flipped, id));
     if (flipped.length === 0) {
-      // console.log("first");
-      // setFlipped([id]);
       setDisabled(false);
-      // console.log(flipped, id);
     } else {
-      if (sameCardClicked(flipped, id)) return;
       setFlipped([flipped[0], id]);
-      // console.log("i'm here");
+
       if (isMatch(id)) {
         setScore(score + 100);
         setGuessed([...guessed, flipped[0], id]);
         checkGame();
         resetCards();
-      playMatchSound();
+        playMatchSound();
       } else {
         setScore(score - 10);
         setTimeout(resetCards, 1000);
       }
     }
   };
+
+  // const saveGameState=(id) => {
+  //   setGameState([
+  //     ...gameState, {
+  //       id: Date.now(),
+  //       score: score,
+  //       moves: moves,
+
+  //     }
+  //   ])
+  // }
+
+  const sameCardClicked = (array, id) => array.includes(id);
 
   const startNewGame = () => {
     playStartSound();
@@ -127,33 +137,23 @@ export default function App({ level, handleOverlayClick }) {
     setTimeout(resetCards, 1500);
   };
 
-  const sameCardClicked = (id) => flipped.includes(id);
-  // const sameCardClicked = (id) => {
-  //   // console.log(flipped.indexOf(id), id, flipped);
-  // }; //тут косяк, не сравнивает как надо сучий сын
-
   const checkGame = () =>
     cards.length === guessed.length + 2 ? gameOver() : null;
 
   const showFinishWindow = () => {
-playWinSound();
+    playWinSound();
     finishWindow.classList.add("show");
     overlay.classList.add("show");
   };
 
   const gameOver = () => {
-    // setGameStart(false);
+    addToTheBestScore();
     setFlipped([]);
     setDisabled(false);
     resetCards();
     initializeDeck();
-    // checkScore(score);
-    // setBestScore(score+100);
-    // console.log(bestScore);
     addToLocalStorage();
     showFinishWindow();
-
-    // startNewGame();
   };
 
   const closeMenu = () => {
@@ -184,12 +184,8 @@ playWinSound();
     return flippedCard.type === clickedCard.type;
   };
 
-  // const bestScoreWindow = document.querySelector(".best-score__wrapper");
-  // const overlay = document.querySelector(".overlay");
-
   const showBestScore = () => {
     bestScoreWindow.classList.add("show");
-    // overlay.classList.toggle("show");
     console.log("showbestscore");
   };
   return (
@@ -210,10 +206,8 @@ playWinSound();
           disabled={disabled}
           guessed={guessed}
         />
-
         <DataBar score={score} moves={moves} bestScore={bestScore} />
       </main>
-
       <Footer />
       <Finish
         startNewGame={startNewGame}
@@ -221,7 +215,6 @@ playWinSound();
         closeMenu={closeMenu}
         showBestScore={showBestScore}
       />
-      {/* <BestScore/> */}
       <Overlay onClick={handleOverlayClick} />
     </div>
   );
