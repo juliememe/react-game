@@ -31,6 +31,7 @@ export default function App({ level, handleOverlayClick }) {
   const audio = new Audio("./assets/audio/movements/sound.mp3");
   const matchAudio = new Audio("./assets/audio/movements/ok.mp3");
   const start = new Audio("./assets/audio/movements/ok1.mp3");
+  const win = new Audio("./assets/audio/movements/win.mp3");
 
   useEffect(() => {
     setCards(initializeDeck());
@@ -73,6 +74,10 @@ export default function App({ level, handleOverlayClick }) {
 
   const playStartSound = () => {
     return sound ? start.play() : null;
+  };
+
+  const playWinSound = () => {
+    return sound ? win.play() : null;
   };
   const handleClick = (id) => {
     playFlipSound();
@@ -131,7 +136,7 @@ export default function App({ level, handleOverlayClick }) {
     cards.length === guessed.length + 2 ? gameOver() : null;
 
   const showFinishWindow = () => {
-    // win.play();
+playWinSound();
     finishWindow.classList.add("show");
     overlay.classList.add("show");
   };
