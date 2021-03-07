@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./settings.scss";
-import BestScore from "../best-score/BestScore";
 import MusicButton from "../music-button/MusicButton";
 
 export default function Settings({ bestScore, toggleSound, sound }) {
@@ -25,6 +24,7 @@ export default function Settings({ bestScore, toggleSound, sound }) {
           <div className="sound">
             {" "}
             sound
+            {/* <button className="sound-off" onClick={toggleSound}>OFF</button> */}
             <button className="sound-on" onClick={toggleSound}>
               {sound ? "ON" : "OFF"}
             </button>
@@ -61,7 +61,6 @@ export default function Settings({ bestScore, toggleSound, sound }) {
             <button className="show-best-score" onClick={showBestScore}>
               show
             </button>
-            <BestScore />
           </div>
         </div>
       </div>

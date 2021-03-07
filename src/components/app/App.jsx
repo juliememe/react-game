@@ -6,6 +6,8 @@ import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import Overlay from "../overlay/Overlay";
 import Finish from "../finish/Finish";
+import Settings from "../settings/Settings";
+import BestScore from "../best-score/BestScore";
 import "./app.scss";
 
 export default function App({ level, handleOverlayClick }) {
@@ -43,7 +45,14 @@ export default function App({ level, handleOverlayClick }) {
     }
   };
 
-  useEffect(() => {});
+  useEffect(() => {
+    localStorage.setItem("bestScoreEver", JSON.stringify(bestScoreEver));
+  }, [bestScoreEver]);
+
+  useEffect(() => {
+    const data = localStorage.getItem("bestScoreEver") || [];
+    setBestScoreEver(JSON.parse(data));
+  }, []);
 
   const addToTheBestScore = () => {
     setBestScoreEver([
@@ -54,6 +63,7 @@ export default function App({ level, handleOverlayClick }) {
         moves: moves,
       },
     ]);
+    console.log(bestScoreEver);
   };
 
   const toggleSound = () => {
@@ -77,6 +87,7 @@ export default function App({ level, handleOverlayClick }) {
   };
   const handleClick = (id) => {
     if (sameCardClicked(flipped, id)) return;
+    console.log(bestScoreEver, "SCORE");
 
     console.log({ cards });
     playFlipSound();
@@ -85,7 +96,6 @@ export default function App({ level, handleOverlayClick }) {
     setFlipped([id]);
     // console.log(guessed)
 
-    console.log(sameCardClicked(flipped, id));
     if (flipped.length === 0) {
       setDisabled(false);
     } else {
@@ -134,7 +144,7 @@ export default function App({ level, handleOverlayClick }) {
     console.log(arr);
     setFlipped(arr);
     console.log(flipped);
-    setTimeout(resetCards, 1500);
+    setTimeout(resetCards, 2000);
   };
 
   const checkGame = () =>
@@ -188,6 +198,9 @@ export default function App({ level, handleOverlayClick }) {
     bestScoreWindow.classList.add("show");
     console.log("showbestscore");
   };
+
+  // const getDate=(string)=> new Date(+string);
+
   return (
     <div className="wrapper">
       <Header
@@ -198,6 +211,14 @@ export default function App({ level, handleOverlayClick }) {
         toggleSound={toggleSound}
         sound={sound}
       />
+      <Settings
+        bestScore={bestScore}
+        level={level}
+        toggleSound={toggleSound}
+        sound={sound}
+      />
+      {/* <BestScore/> */}
+      <BestScore gameData={bestScoreEver.map(elem => <div className="game-data" key={elem.id}> <div>date: {(new Date(+elem.id)).toString()}</div> <div>  score:{elem.score}</div> <div>  moves:{elem.moves}</div> </div>)} />
       <main className="main">
         <CardBoard
           cards={cards}
@@ -215,6 +236,7 @@ export default function App({ level, handleOverlayClick }) {
         closeMenu={closeMenu}
         showBestScore={showBestScore}
       />
+
       <Overlay onClick={handleOverlayClick} />
     </div>
   );

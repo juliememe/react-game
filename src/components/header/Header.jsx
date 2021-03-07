@@ -1,9 +1,7 @@
 import React from "react";
 import "./header.scss";
-import Settings from "../settings/Settings";
 
-
-export default function Header({ bestScore, level, startNewGame, toggleSound, sound }) {
+export default function Header({ startNewGame }) {
   const settings = document.querySelector(".settings");
   const overlay = document.querySelector(".overlay");
   const handleClick = () => {
@@ -35,10 +33,8 @@ export default function Header({ bestScore, level, startNewGame, toggleSound, so
           <button className="start__button" onClick={startNewGame}>
             start
           </button>
-          <button className="settings__button" onClick={handleClick}>
-           
-          </button>
-        <Settings bestScore={bestScore} level={level} toggleSound={toggleSound} sound={sound}/>
+          <button className="settings__button" onClick={handleClick}></button>
+          {/* <Settings bestScore={bestScore} level={level} toggleSound={toggleSound} sound={sound}/> */}
         </div>
       </div>
     </div>

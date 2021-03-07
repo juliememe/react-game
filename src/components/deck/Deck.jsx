@@ -1,6 +1,4 @@
-
-import {CARDDECK} from '../card-list/CardList';
-
+import { CARDDECK } from "../card-list/CardList";
 
 function shuffle(array) {
   const newArray = array.slice(0);
@@ -13,15 +11,9 @@ function shuffle(array) {
   return newArray;
 }
 
-
 export default function initializeDeck() {
-
-  // const level = ['easy', 'medium', 'hard'];
-
-  // const newAr = card.slice(0, 4);
   let id = 0;
-  
-  
+
   const card = CARDDECK.reduce((acc, type) => {
     acc.push({
       id: id++,
@@ -36,8 +28,5 @@ export default function initializeDeck() {
 
   return shuffle(card);
 
-// console.log(CARDDECK)
- 
-
-  
+  // console.log(CARDDECK)
 }

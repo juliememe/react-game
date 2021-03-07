@@ -1,37 +1,40 @@
-.logo img{
+.logo img {
     width: 150px;
 }
 
-.git-name{
+.git-name {
     font-weight: 900;
-    a{
+
+    a {
         text-decoration: none;
         color: black;
     }
 }
-.footer{
+
+.footer {
 
 
-.container{
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 30px;
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-size: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: auto;
+
+
+    }
+}
+
+.box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-align-items: flex-end;
-margin-top: auto;
-
-
-}
 }
 
-.box{
-    display: flex;
-    flex-direction: row;
-}
-.year{
+.year {
     font-size: 16px;
     font-weight: 500;
     text-align: end;

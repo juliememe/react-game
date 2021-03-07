@@ -1,6 +1,5 @@
 .finish {
     display: none;
-    // display: block;
     width: 500px;
     height: 350px;
     background-color: white;
@@ -15,7 +14,7 @@
     z-index: 100;
     cursor: default;
 
-    h1{
+    h1 {
         font-size: 40px;
         padding-bottom: 20px;
     }
@@ -23,46 +22,49 @@
 
 .finish.show {
     display: block;
-    // z-index: 10;
 }
+
 .overlay.show {
-    // transition: 5s;
     display: block;
 }
-.final-score{
+
+.final-score {
     font-size: 24px;
 }
-.finish{
-    &__button{
-    outline: none;
-    font-size: 18px;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 5px;
-    margin: 10px;
-    transition: 0.1s;
-    margin-bottom: 30px;
-    }
-    &__buttons{
-        button{
+
+.finish {
+    &__button {
         outline: none;
         font-size: 18px;
         background-color: transparent;
         cursor: pointer;
         padding: 5px;
-        // margin: 10px;
+        margin: 10px;
         transition: 0.1s;
         margin-bottom: 30px;
+    }
+
+    &__buttons {
+        button {
+            outline: none;
+            font-size: 18px;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 5px;
+            // margin: 10px;
+            transition: 0.1s;
+            margin-bottom: 30px;
 
         }
-        button:hover{
-    background-color: rgba(236, 57, 236, 0.781);
+
+        button:hover {
+            background-color: rgba(236, 57, 236, 0.781);
 
         }
     }
 }
-.finish__button:hover{
+
+.finish__button:hover {
     background-color: rgba(236, 57, 236, 0.781);
 
 }
-

@@ -1,14 +1,7 @@
 import React from "react";
-import BestScore from "../best-score/BestScore";
 import "./finish.scss";
-import "../best-score/bestScore.scss";
 
-export default function Finish({
-  startNewGame,
-  score,
-  closeMenu,
-  showBestScore,
-}) {
+export default function Finish({ startNewGame, score, closeMenu }) {
   return (
     <div className="finish">
       <h1>Good job!</h1>
@@ -24,7 +17,6 @@ export default function Finish({
           cancel
         </button>
       </div>
-      <BestScore />
     </div>
   );
 }

@@ -9,23 +9,24 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    // background-image: url("brain.png");
-    // background-position: right;
-    // background-size: contain;
-    // background-repeat: no-repeat;
     text-align: center;
     padding: 30px 20px;
     z-index: 150;
     cursor: default;
-    
+
 }
 
 .best-score__wrapper.show {
     display: block;
-    // z-index: 10;
 }
-h1{
+
+h1 {
     font-weight: 900;
     letter-spacing: -3px;
     margin: 0;
+}
+.game-data__title{
+    display: flex;
+    flex-direction: row;
+justify-content: center;
 }
