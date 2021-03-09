@@ -18,6 +18,9 @@ export default function App({ level, handleOverlayClick }) {
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
   const [sound, setSound] = useState(true);
+  // const[width, setWidth] = useState(150);
+  // const [height, setHeight] = useState(220);
+  // const [boardSize, setBoardSize] = useState(4);
   const [bestScore, setBestScore] = useState(
     Number(localStorage.getItem("bestScore")) || 0
   );
@@ -59,11 +62,10 @@ export default function App({ level, handleOverlayClick }) {
       ...bestScoreEver,
       {
         id: Date.now(),
-        score: score,
+        score: score + 100,
         moves: moves,
       },
     ]);
-    console.log(bestScoreEver);
   };
 
   const toggleSound = () => {
@@ -94,7 +96,6 @@ export default function App({ level, handleOverlayClick }) {
     setMoves(moves + 1);
     setDisabled(true);
     setFlipped([id]);
-    // console.log(guessed)
 
     if (flipped.length === 0) {
       setDisabled(false);
@@ -199,8 +200,6 @@ export default function App({ level, handleOverlayClick }) {
     console.log("showbestscore");
   };
 
-  // const getDate=(string)=> new Date(+string);
-
   return (
     <div className="wrapper">
       <Header
@@ -217,8 +216,26 @@ export default function App({ level, handleOverlayClick }) {
         toggleSound={toggleSound}
         sound={sound}
       />
-      {/* <BestScore/> */}
-      <BestScore gameData={bestScoreEver.map(elem => <div className="game-data" key={elem.id}> <div>date: {(new Date(+elem.id)).toString()}</div> <div>  score:{elem.score}</div> <div>  moves:{elem.moves}</div> </div>)} />
+      <BestScore
+        gameData={bestScoreEver.map((elem) => (
+          <div className="game-data" key={elem.id}>
+            {" "}
+            <div className="game-date">
+              date:{" "}
+              {new Date(+elem.id).getDate().toString().length < 2
+                ? "0" + new Date(+elem.id).getDate().toString()
+                : new Date(+elem.id).getDate().toString()}
+              .
+              {(new Date(+elem.id).getMonth() + 1).toString().length < 2
+                ? "0" + (new Date(+elem.id).getMonth() + 1).toString()
+                : (new Date(+elem.id).getMonth() + 1).toString()}
+              . {new Date(+elem.id).getFullYear().toString()}
+            </div>{" "}
+            <div className="game-score"> score:{elem.score}</div>{" "}
+            <div className="game-moves"> moves:{elem.moves}</div>{" "}
+          </div>
+        ))}
+      />
       <main className="main">
         <CardBoard
           cards={cards}
@@ -226,6 +243,8 @@ export default function App({ level, handleOverlayClick }) {
           handleClick={handleClick}
           disabled={disabled}
           guessed={guessed}
+          level={level}
+        
         />
         <DataBar score={score} moves={moves} bestScore={bestScore} />
       </main>

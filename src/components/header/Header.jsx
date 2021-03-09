@@ -5,7 +5,6 @@ export default function Header({ startNewGame }) {
   const settings = document.querySelector(".settings");
   const overlay = document.querySelector(".overlay");
   const handleClick = () => {
-    console.log("im here");
     settings.classList.toggle("show");
     overlay.classList.toggle("show");
   };
@@ -34,7 +33,6 @@ export default function Header({ startNewGame }) {
             start
           </button>
           <button className="settings__button" onClick={handleClick}></button>
-          {/* <Settings bestScore={bestScore} level={level} toggleSound={toggleSound} sound={sound}/> */}
         </div>
       </div>
     </div>

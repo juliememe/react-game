@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./settings.scss";
 import MusicButton from "../music-button/MusicButton";
 
 export default function Settings({ bestScore, toggleSound, sound }) {
-  const [level, setLevel] = useState("");
+  // const [level, setLevel] = useState("");
 
   const bestScoreWindow = document.querySelector(".best-score__wrapper");
 
@@ -24,12 +24,11 @@ export default function Settings({ bestScore, toggleSound, sound }) {
           <div className="sound">
             {" "}
             sound
-            {/* <button className="sound-off" onClick={toggleSound}>OFF</button> */}
             <button className="sound-on" onClick={toggleSound}>
               {sound ? "ON" : "OFF"}
             </button>
           </div>
-          <div className="level">
+          {/* <div className="level">
             <div className="level-title"> level </div>
 
             <select
@@ -53,7 +52,7 @@ export default function Settings({ bestScore, toggleSound, sound }) {
                 hard
               </option>
             </select>
-          </div>
+          </div> */}
           <div className="reset"> best score : {bestScore}</div>
           <div className="reset">
             {" "}

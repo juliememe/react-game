@@ -9,7 +9,6 @@ export default function Overlay() {
   const finishWindow = document.querySelector(".finish");
 
   const handleOverlayClick = () => {
-    console.log("pararram");
     settings.classList.remove("show");
     overlay.classList.remove("show");
     bestScoreWindow.classList.remove("show");
