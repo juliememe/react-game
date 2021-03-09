@@ -1,0 +1,32 @@
+.card-board {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+.best-score {
+    border: 1px solid black;
+    height: 20px;
+}
+
+@media all and (display-mode: fullscreen) {
+
+    .card-board {
+        padding: 60px 60px;
+        max-width: 1200px;
+        background-color: rgba(236, 57, 236, 0.781);
+    }
+
+    .card {
+        width: 300px;
+    }
+
+    .flipper {
+        img {
+            width: 500px;
+        }
+    }
+
+}

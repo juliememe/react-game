@@ -1,0 +1,48 @@
+.data-bar {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  color: black;
+}
+
+.score-title {
+  font-size: 44px;
+  font-family: "Roboto";
+  font-weight: 700;
+}
+
+.score-number {
+  border: 1px solid black;
+  padding: 0 12px;
+  height: 44px;
+  font-size: 36px;
+  text-align: end;
+}
+
+.moves {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+
+.best-score {
+  background-color: #c4c4c4a9;
+}
+/*# sourceMappingURL=dataBar.css.map */

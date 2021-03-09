@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto";
+
+
+}
+
+// .root {
+
+
+//     width: 100vh;
+//     margin: 0;
+//     padding: 0;
+// }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    position: relative;
+    background-image: url('brain1.png');
+    background-position: 100% 50%;
+    background-size: 25%;
+    background-repeat: no-repeat;
+}
+
+.main {
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .header {
+        .container {
+            margin-top: 10px;
+            padding: 0;
+        }
+    }
+
+    .buttons {
+        margin: 5px;
+    }
+
+    .card-board {
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .footer {
+        .container {
+            padding: 5px;
+        }
+    }
+
+
+    .game-title {
+        img {
+            width: 300px;
+            padding: 10px;
+        }
+    }
+
+    .start__button {
+        width: 50px;
+        height: 50px;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .settings__button {
+        width: 50px;
+        height: 50px;
+
+    }
+
+    .full-size {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo {
+        img {
+            width: 100px;
+        }
+    }
+
+    .moves {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    .score {
+        align-items: center;
+    }
+
+    .score-title {
+        font-size: 24px;
+    }
+
+    .score-number {
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+        text-align: end;
+        border: none;
+        height: 28px;
+        margin-left: 5px;
+    }
+
+    .best-score {
+        display: none;
+    }
+
+    .git-name {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .year {
+        font-size: 12px;
+    }
+}
+.game{
+    &-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    }
+
+  
+}
+
+.score-data{
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    overflow: hidden;
+}

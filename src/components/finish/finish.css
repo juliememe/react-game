@@ -1,0 +1,66 @@
+.finish {
+  display: none;
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 30px 20px;
+  z-index: 100;
+  cursor: default;
+}
+
+.finish h1 {
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+.finish.show {
+  display: block;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.final-score {
+  font-size: 24px;
+}
+
+.finish__button {
+  outline: none;
+  font-size: 18px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  margin-bottom: 30px;
+}
+
+.finish__buttons button {
+  outline: none;
+  font-size: 18px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  margin-bottom: 30px;
+}
+
+.finish__buttons button:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
+
+.finish__button:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
+/*# sourceMappingURL=finish.css.map */

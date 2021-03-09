@@ -1,0 +1,144 @@
+.settings {
+  display: none;
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-image: url("brain.png");
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 30px 20px;
+  z-index: 100;
+  cursor: default;
+}
+
+.settings__data {
+  margin-top: 20px;
+  font-weight: 900;
+  font-size: 28px;
+}
+
+.settings__button {
+  background-image: url("./settings.svg");
+  background-repeat: no-repeat;
+  background-position: cover;
+  width: 60px;
+  height: 60px;
+  font-weight: 900;
+  font-size: 28px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.settings__button:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
+
+.settings.show {
+  display: block;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.603);
+  cursor: pointer;
+}
+
+.overlay.show {
+  display: block;
+}
+
+.level {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-display: row;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.level-title {
+  margin-right: 10px;
+}
+
+.level-select {
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.level-select:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
+
+.show-best-score {
+  outline: none;
+  font-size: 18px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.show-best-score:hover {
+  background-color: rgba(236, 57, 236, 0.781);
+}
+
+.music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.music__button .play,
+.music__button .stop {
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.sound-on {
+  outline: none;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px;
+  margin: 10px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+/*# sourceMappingURL=settings.css.map */
